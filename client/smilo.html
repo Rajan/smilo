@@ -1,0 +1,47 @@
+<head>
+    <title>Smilo</title>
+</head>
+<body>
+{{> header }}
+{{> messages }}
+{{> input }}
+</body>
+
+<template name="header">
+    <div class="menu">
+        <div class="mid"><!--<i class="fa fa-chevron-left"></i> --> <img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <!-- <div class="name">Smilo</div> -->
+        <!-- <div class="last">18:09</div> -->
+    </div>
+</template>
+<template name="messages">
+    <ol class="chat">
+
+
+            {{#each messages}}
+                <!--<strong>{{name}}:</strong> {{message}}<br>-->
+            <li class="self">
+                <div class="msg">
+                    <p>{{message}}</p>
+                    <time>20:17</time>
+                </div>
+            </li>
+            {{/each}}
+
+    </ol>
+</template>
+<template name="input">
+    <input class="textarea" type="text" id="message" placeholder="Type here!"/><div id="send" class="send"></div><div class="emojis"></div>
+    <!--<p>Message: <input type="text" id="message"></p>-->
+</template>
+
+<!--<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>-->
