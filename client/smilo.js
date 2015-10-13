@@ -45,6 +45,22 @@ if (Meteor.isClient) {
                 document.getElementById('message').value = '';
                 message.value = '';
             }
+        },
+
+        'click div#smile' : function (event) {
+            if (Meteor.user())
+                name = Meteor.user().profile.name;
+            else
+                name = 'Anonymous';
+            var message = document.getElementById('message');
+            Messages.insert({
+                name: name,
+                message: ':)',
+                time: Date.now()
+            });
+
+            document.getElementById('message').value = '';
+            message.value = '';
         }
     }
 }

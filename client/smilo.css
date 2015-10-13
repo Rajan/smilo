@@ -320,6 +320,8 @@ input.textarea {
     padding-right: 55px;
     color: #666;
     font-weight: 400;
+    font-family:  Monospace, 'Lato', sans-serif;
+    font-size: 0.8rem;
 }
 .emojis {
     position: fixed;
@@ -328,7 +330,7 @@ input.textarea {
     left: 7px;
     width: 34px;
     height: 34px;
-    background-image: url(http://i.imgur.com/5WUpcPZ.png);
+    background-image: url("images/smiley.png");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 100;
