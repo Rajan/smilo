@@ -9,29 +9,40 @@
 
 <template name="header">
     <div class="menu">
-        <div class="mid"><!--<i class="fa fa-chevron-left"></i> --> <img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="mid"><!--<i class="fa fa-chevron-left"></i> --> <img src="images/lg-Awesome.png"
+                                                                         draggable="false"/></div>
         <!-- <div class="name">Smilo</div> -->
         <!-- <div class="last">18:09</div> -->
     </div>
 </template>
 <template name="messages">
     <ol class="chat">
-
-
-            {{#each messages}}
-                <!--<strong>{{name}}:</strong> {{message}}<br>-->
-            <li class="self">
-                <div class="msg">
-                    <p>{{message}}</p>
-                    <!--<time>{{time}}</time>-->
-                </div>
-            </li>
-            {{/each}}
-
+        {{#each messages}}
+            <!--<strong>{{name}}:</strong> {{message}}<br>-->
+            {{#if equals from "c" }}
+                <li class="self">
+                    <div class="msg">
+                        <p>{{{message}}}</p>
+                        <!--<time>{{time}}</time>-->
+                    </div>
+                </li>
+            {{/if}}
+            {{#if equals from "s" }}
+                <li class="other">
+                    <div class="msg server">
+                        <a href="http://www.google.com" target="_blank" style="text-decoration: none;"><p>{{{message}}}</p></a>
+                        <!--<time>{{time}}</time>-->
+                    </div>
+                </li>
+            {{/if}}
+        {{/each}}
     </ol>
 </template>
 <template name="input">
-    <input class="textarea" type="text" id="message" placeholder="Type here!"/><div id="send" class="send"></div><div id="smile" class="emojis"></div>
+    <input class="textarea" type="text" id="message" placeholder="Type here!"/>
+
+    <div id="send" class="send"></div>
+    <div id="smile" class="emojis"></div>
     <!--<p>Message: <input type="text" id="message"></p>-->
 </template>
 

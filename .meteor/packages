@@ -24,3 +24,4 @@ check
 accounts-ui
 accounts-github
 standard-app-packages
+dburles:spacebars-tohtml
