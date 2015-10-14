@@ -2,14 +2,14 @@
  * Created by rajanchandi on 10/13/15.
  */
 if (Meteor.isServer) {
-
     Meteor.methods({
         'removeAllMessages': function () {
             return Messages.remove({});
         },
 
-        'clientMessage': function(msg) {
+        'clientMessage': function(msg, userId) {
             Messages.insert({
+                userId: userId,
                 name: 'Smilo',
                 message: 'Answer to...' + msg,
                 time: Date.now(),

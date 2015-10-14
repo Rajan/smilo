@@ -21,27 +21,29 @@ Template.registerHelper('equals',
 if (Meteor.isClient) {
     Template.messages.helpers({
         messages: function () {
-            return Messages.find({}, {sort: {time: 1}});
+            var userId = Meteor.userId();
+            return Messages.find({userId: userId}, {sort: {time: 1}});
         }
     });
 
 
 
     function messagePosted(){
-        if (Meteor.user())
+        if (Meteor.user() && Meteor.user().profile)
             name = Meteor.user().profile.name;
         else
             name = 'Anonymous';
         var message = document.getElementById('message');
-
+        var userId= Meteor.userId();
         if (message.value != '') {
             Messages.insert({
+                userId: userId,
                 name: name,
                 message: message.value,
                 time: Date.now(),
                 from: "c"
             });
-            Meteor.call('clientMessage', message.value);
+            Meteor.call('clientMessage', message.value, Meteor.userId());
             document.getElementById('message').value = '';
             message.value = '';
         }
@@ -68,12 +70,14 @@ if (Meteor.isClient) {
         },
 
         'click div#smile': function (event) {
-            if (Meteor.user())
+            if (Meteor.user() && Meteor.user().profile)
                 name = Meteor.user().profile.name;
             else
                 name = 'Anonymous';
             var message = document.getElementById('message');
+            var userId = Meteor.userId();
             Messages.insert({
+                userId: userId,
                 name: name,
                 message: '<emoji class="funny" style="height:32px;width: 32px;" />',
                 time: Date.now(),
