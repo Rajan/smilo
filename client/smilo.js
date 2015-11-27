@@ -22,7 +22,7 @@ if (Meteor.isClient) {
     Template.messages.helpers({
         messages: function () {
             var userId = Meteor.userId();
-            return Messages.find({userId: userId}, {sort: {time: 1}});
+            return Messages.find({userId: userId}, {sort: {time: -1}});
         }
     });
 
