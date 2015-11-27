@@ -7,12 +7,12 @@ if (Meteor.isServer) {
             return Messages.remove({});
         },
 
-        'clientMessage': function(msg, userId) {
+        'clientMessage': function(msg, userId, tm) {
             Messages.insert({
                 userId: userId,
                 name: 'Smilo',
                 message: 'Answer to...' + msg,
-                time: Date.now(),
+                time: tm + 1,
                 from: "s"
             });
         }

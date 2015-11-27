@@ -22,7 +22,7 @@ if (Meteor.isClient) {
     Template.messages.helpers({
         messages: function () {
             var userId = Meteor.userId();
-            return Messages.find({userId: userId}, {sort: {time: -1}});
+            return Messages.find({userId: userId}, {sort: {time: 1}});
         }
     });
 
@@ -45,7 +45,7 @@ if (Meteor.isClient) {
             });
 
             setTimeout(function(){
-                Meteor.call('clientMessage', message.value, Meteor.userId());
+                Meteor.call('clientMessage', message.value, Meteor.userId(), message.time);
                 document.getElementById('message').value = '';
                 message.value = '';
 
