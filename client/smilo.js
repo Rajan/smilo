@@ -43,9 +43,13 @@ if (Meteor.isClient) {
                 time: Date.now(),
                 from: "c"
             });
-            Meteor.call('clientMessage', message.value, Meteor.userId());
-            document.getElementById('message').value = '';
-            message.value = '';
+
+            setTimeout(function(){
+                Meteor.call('clientMessage', message.value, Meteor.userId());
+                document.getElementById('message').value = '';
+                message.value = '';
+
+            }, 1000);
         }
     }
 
